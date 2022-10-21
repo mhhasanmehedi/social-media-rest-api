@@ -22,7 +22,7 @@ router.post("/register", async (req, res) => {
     const user = await newUser.save();
     res.status(200).json(user);
   } catch (error) {
-    console.log(error);
+    res.status(400).json("Your all ready registered");
   }
 });
 
