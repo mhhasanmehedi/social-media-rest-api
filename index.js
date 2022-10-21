@@ -9,6 +9,7 @@ const authRoute = require("./route/auth");
 const app = express();
 dotenv.config();
 
+//----------------- mongoose connection -----------------
 mongoose
   .connect(process.env.MONGO_URL, {
     useNewUrlParser: true,
@@ -22,9 +23,11 @@ app.use(express.json());
 app.use(helmet());
 app.use(morgan("common"));
 
+//----------------- routes --------------
 app.use("/api/users", userRoute);
 app.use("/api/auth", authRoute);
 
+//----------------- app listen -----------------
 app.listen(5000, () => {
   console.log("Backend server is ready");
 });
